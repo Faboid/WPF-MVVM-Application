@@ -3,10 +3,103 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_MVVM_Application"
+        xmlns:local="clr-namespace:WPF_MVVM_Application" 
+        xmlns:viewmodels="clr-namespace:WPF_MVVM_Application.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="WPF_MVVM_Application"
+        MaxHeight="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}"
+        MaxWidth="{x:Static SystemParameters.MaximizedPrimaryScreenWidth}"
+        Height="450" 
+        Width="800"
+        MinHeight="300"
+        MinWidth="300"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        x:Name="MainWindowName"
+        >
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+            CaptionHeight="30" 
+            ResizeBorderThickness="5"
+            />
+    </WindowChrome.WindowChrome>
+
+    <Grid 
+        Background="Black">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+
+        <!--topbar-->
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition MinWidth="15" MaxWidth="30"/>
+                <ColumnDefinition MinWidth="15" MaxWidth="30"/>
+                <ColumnDefinition MinWidth="15" MaxWidth="30"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock 
+                Grid.Column="0" 
+                Text="{Binding ElementName=MainWindowName, Path=Title}"
+                FontSize="16"
+                Padding="2, 0, 0, 0"
+                Foreground="White"
+                Opacity="0.90"/>
+
+            <!--To get commands-->
+            <Button 
+                x:Name="MinimizeButton"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                Content="—"
+                Grid.Column="1" 
+                Command="{Binding MinimizeCommand}"
+                />
+
+            <Button 
+                x:Name="ResizeButton"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                Content="▢"
+                Grid.Column="2"
+                Command="{Binding ResizeCommand}"
+                />
+
+            <Button 
+                x:Name="CloseButton"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                Content="✖"
+                Grid.Column="3"
+                Command="{Binding CloseCommand}"
+                />
+
+        </Grid>
+
+        <DockPanel
+            Grid.Row="2"
+            Grid.Column="1"
+            Background="#FF121212"
+            >
+
+            <DockPanel.Resources>
+
+            </DockPanel.Resources>
+
+            <ContentControl 
+                Margin="15"
+                Content="{Binding CurrentViewModel}"/>
+
+        </DockPanel>
 
     </Grid>
 </Window>
