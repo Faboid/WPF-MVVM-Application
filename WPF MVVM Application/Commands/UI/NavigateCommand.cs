@@ -1,7 +1,5 @@
 ﻿using System;
-using WPF_MVVM_Application.Commands.Bases;
 using WPF_MVVM_Application.Services;
-using WPF_MVVM_Application.ViewModels.Bases;
 
 namespace WPF_MVVM_Application.Commands.UI;
 
