@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WPF_MVVM_Application.Stores;
 using WPF_MVVM_Application.ViewModels;
 
 namespace WPF_MVVM_Application;
@@ -14,7 +15,10 @@ public partial class App : Application {
     protected override void OnStartup(StartupEventArgs e) {
 
         MainWindow = new MainWindow();
-        MainWindow.DataContext = new MainViewModel(new(), MainWindow);
+
+        var navigationStore = new NavigationStore();
+        MainWindow.DataContext = new MainViewModel(navigationStore, MainWindow);
+        navigationStore.CurrentViewModel = new IndexViewModel();
         MainWindow.Show();
 
         base.OnStartup(e);

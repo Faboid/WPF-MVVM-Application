@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_MVVM_Application" 
-        xmlns:viewmodels="clr-namespace:WPF_MVVM_Application.ViewModels"
+        xmlns:views="clr-namespace:WPF_MVVM_Application.Views"
+        xmlns:viewmodels="clr-namespace:WPF_MVVM_Application.ViewModels" 
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="WPF_MVVM_Application"
@@ -86,13 +87,15 @@
         </Grid>
 
         <DockPanel
-            Grid.Row="2"
+            Grid.Row="1"
             Grid.Column="1"
             Background="#FF121212"
             >
 
             <DockPanel.Resources>
-
+                <DataTemplate DataType="{x:Type viewmodels:IndexViewModel}">
+                    <views:IndexView/>
+                </DataTemplate>
             </DockPanel.Resources>
 
             <ContentControl 
