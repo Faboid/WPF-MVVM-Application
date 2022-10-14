@@ -10,11 +10,11 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
 
-        <Label
+        <Button
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Foreground="White"
-            Content="{Binding HelloWorld}"
+            Content="Press Here!"
+            Command="{Binding HelloCommand}"
             />
 
     </Grid>
