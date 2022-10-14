@@ -6,27 +6,22 @@ using System.Linq;
 
 namespace WPF_MVVM_Application.ViewModels.Bases;
 
-public class ErrorsViewModel : INotifyDataErrorInfo
-{
+public class ErrorsViewModel : INotifyDataErrorInfo {
 
     private readonly Dictionary<string, List<string>> _propertyErrors = new();
     public bool HasErrors => _propertyErrors.Any();
     public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
-    public IEnumerable GetErrors(string? propertyName)
-    {
-        if (propertyName != null)
-        {
+    public IEnumerable GetErrors(string? propertyName) {
+        if(propertyName != null) {
             return _propertyErrors.GetValueOrDefault(propertyName, new());
         }
 
         return Array.Empty<string>();
     }
 
-    public void AddError(string propertyName, string errorMessage)
-    {
-        if (!_propertyErrors.ContainsKey(propertyName))
-        {
+    public void AddError(string propertyName, string errorMessage) {
+        if(!_propertyErrors.ContainsKey(propertyName)) {
             _propertyErrors.Add(propertyName, new());
         }
 
@@ -34,16 +29,13 @@ public class ErrorsViewModel : INotifyDataErrorInfo
         OnErrorsChanged(propertyName);
     }
 
-    public void ClearErrors(string propertyName)
-    {
-        if (_propertyErrors.Remove(propertyName))
-        {
+    public void ClearErrors(string propertyName) {
+        if(_propertyErrors.Remove(propertyName)) {
             OnErrorsChanged(propertyName);
         }
     }
 
-    private void OnErrorsChanged(string propertyName)
-    {
+    private void OnErrorsChanged(string propertyName) {
         ErrorsChanged?.Invoke(this, new(propertyName));
     }
 

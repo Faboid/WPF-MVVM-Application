@@ -2,27 +2,22 @@
 using System.ComponentModel;
 
 namespace WPF_MVVM_Application.ViewModels.Bases;
-public class ViewModelBase : INotifyPropertyChanged, IDisposable
-{
+public class ViewModelBase : INotifyPropertyChanged, IDisposable {
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    protected void OnPropertyChanged(string? propertyName)
-    {
+    protected void OnPropertyChanged(string? propertyName) {
         PropertyChanged?.Invoke(this, new(propertyName));
     }
 
-    protected void SetAndRaise<T>(string name, ref T prop, T value)
-    {
+    protected void SetAndRaise<T>(string name, ref T prop, T value) {
         prop = value;
         OnPropertyChanged(name);
     }
 
     private bool _isDisposed = false;
-    public void Dispose()
-    {
-        if (!_isDisposed)
-        {
+    public void Dispose() {
+        if(!_isDisposed) {
             Dispose(_isDisposed);
         }
         _isDisposed = true;
