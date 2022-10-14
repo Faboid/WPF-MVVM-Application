@@ -3,6 +3,7 @@
 A template for creating a .Net WPF Application using the MVVM architecture.
 
 Provides base commands(sync & async), a base viewmodel and error view model(to be used in a composite fashion), and an index view & viewmodel that shows how to wire everything up.
+An integrated notification system is used to send messages to the user, but, unlike MessageBox.Show(), the thread doesn't stop for an answer.
 
 ## Usage:
 1. Clone the repo to your computer.
