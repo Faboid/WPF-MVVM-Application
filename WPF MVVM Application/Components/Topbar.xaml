@@ -17,36 +17,33 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock 
-                Grid.Column="0" 
-                Text="{Binding ElementName=_topbar, Path=Window.Title}"
-                FontSize="16"
-                Padding="0, 0, 0, 0"
-                Foreground="White"
-                Opacity="0.90"/>
+            Grid.Column="0" 
+            Text="{Binding ElementName=_topbar, Path=Window.Title}"
+            FontSize="16"
+            Padding="0, 0, 0, 0"
+            Foreground="{Binding ElementName=_topbar, Path=TitleColor}"
+            />
 
         <Button 
-                x:Name="MinimizeButton"
-                WindowChrome.IsHitTestVisibleInChrome="True"
-                Content="—"
-                Grid.Column="1" 
-                Command="{Binding ElementName=_topbar, Path=MinimizeCommand, Mode=OneWay}"
-                />
+            WindowChrome.IsHitTestVisibleInChrome="True"
+            Content="—"
+            Grid.Column="1" 
+            Command="{Binding ElementName=_topbar, Path=MinimizeCommand, Mode=OneWay}"
+            />
 
         <Button 
-                x:Name="ResizeButton"
-                WindowChrome.IsHitTestVisibleInChrome="True"
-                Content="▢"
-                Grid.Column="2"
-                Command="{Binding ElementName=_topbar, Path=ResizeCommand}"
-                />
+            WindowChrome.IsHitTestVisibleInChrome="True"
+            Content="▢"
+            Grid.Column="2"
+            Command="{Binding ElementName=_topbar, Path=ResizeCommand}"
+            />
 
         <Button 
-                x:Name="CloseButton"
-                WindowChrome.IsHitTestVisibleInChrome="True"
-                Content="✖"
-                Grid.Column="3"
-                Command="{Binding ElementName=_topbar, Path=CloseCommand}"
-                />
+            WindowChrome.IsHitTestVisibleInChrome="True"
+            Content="✖"
+            Grid.Column="3"
+            Command="{Binding ElementName=_topbar, Path=CloseCommand}"
+            />
 
     </Grid>
     

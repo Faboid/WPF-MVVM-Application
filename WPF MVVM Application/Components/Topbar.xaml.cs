@@ -3,12 +3,24 @@ using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace WPF_MVVM_Application.Components;
+
 /// <summary>
-/// Interaction logic for Topbar.xaml
+/// Provides a display for a window's title and buttons to minimize, resize, and close it.
 /// </summary>
 public partial class Topbar : UserControl {
+
+    private static SolidColorBrush DefaultTitleColor => new((Color)ColorConverter.ConvertFromString("#000000"));
+
+    public Brush TitleColor {
+        get { return (Brush)GetValue(TitleColorProperty); }
+        set { SetValue(TitleColorProperty, value); }
+    }
+
+    public static readonly DependencyProperty TitleColorProperty =
+        DependencyProperty.Register("TitleColor", typeof(Brush), typeof(Topbar), new PropertyMetadata(DefaultTitleColor));
 
     public Window Window {
         get { return (Window)GetValue(WindowProperty); }

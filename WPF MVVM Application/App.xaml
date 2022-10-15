@@ -8,6 +8,7 @@
 
                 <ResourceDictionary Source="pack://application:,,,/Styles/WindowStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Styles/NotificationBoxStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/TopbarStyle.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
