@@ -16,36 +16,21 @@ public class MainViewModel : ViewModelBase {
     private string _message = "";
     public string Message { get => _message; set => SetAndRaise(nameof(Message), ref _message, value); }
 
-    private bool _messageBoxVisibility = false;
-    public bool MessageBoxVisibility { get => _messageBoxVisibility; set => SetAndRaise(nameof(MessageBoxVisibility), ref _messageBoxVisibility, value); }
-
-    public ICommand CloseMessageCommand { get; }
-
     public MainViewModel(NavigationStore navigationStore, INotificationService notificationService) {
         _navigationStore = navigationStore;
         _notificationService = notificationService;
-        CloseMessageCommand = new RelayCommand(CloseMessage);
-
         _navigationStore.CurrentViewModelChanged += OnCurrentViewChanged;
-        _notificationService.NewMessage += OnNewMessage;
+        _notificationService.NewMessage += SetMessage;
     }
 
-    private void OnNewMessage(string message) {
-        Message = message;
-        MessageBoxVisibility = true;
-    }
-
-    private void CloseMessage() {
-        Message = "";
-        MessageBoxVisibility = false;
-    }
+    private void SetMessage(string text) => Message = text;
 
     private void OnCurrentViewChanged() {
         OnPropertyChanged(nameof(CurrentViewModel));
     }
 
     protected override void Dispose(bool disposed) {
-        _notificationService.NewMessage -= OnNewMessage;
+        _notificationService.NewMessage -= SetMessage;
         _navigationStore.CurrentViewModelChanged -= OnCurrentViewChanged;
         base.Dispose(disposed);
     }

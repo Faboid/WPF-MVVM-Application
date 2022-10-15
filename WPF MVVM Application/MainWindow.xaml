@@ -72,57 +72,11 @@
 
         </DockPanel>
 
-        <Rectangle
-            Grid.Row="2"
+        <components:NotificationBox
             Grid.Column="1"
-            Fill="Black"
-            Opacity="0.4"
-            Visibility="{Binding MessageBoxVisibility, Converter={StaticResource BooleanToVisibilityConverter}}"
+            Grid.Row="2"
+            MessageText="{Binding Message}"
             />
-
-        <Grid
-            Grid.Row="2"
-            Grid.Column="1"
-            Background="#FF272121"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Visibility="{Binding MessageBoxVisibility, Converter={StaticResource BooleanToVisibilityConverter}}"
-            >
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="10"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="10"/>
-            </Grid.RowDefinitions>
-
-            <TextBlock
-                Grid.Row="1"
-                Grid.Column="1"
-                Text="{Binding Message}"
-                Foreground="White"
-                Opacity="0.80"
-                Margin="5"
-                TextWrapping="Wrap"
-                />
-
-            <Button
-                Grid.Row="2"
-                Grid.Column="1"
-                HorizontalAlignment="Right"
-                Content="Ok"
-                Width="70"
-                Height="20"
-                Margin="5"
-                Command="{Binding CloseMessageCommand}"
-                />
-
-        </Grid>
 
     </Grid>
 </Window>
