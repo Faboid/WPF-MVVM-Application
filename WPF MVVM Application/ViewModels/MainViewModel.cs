@@ -1,4 +1,3 @@
-using System.Windows;
 using System.Windows.Input;
 using WPF_MVVM_Application.Services;
 using WPF_MVVM_Application.Stores;
@@ -20,18 +19,11 @@ public class MainViewModel : ViewModelBase {
     private bool _messageBoxVisibility = false;
     public bool MessageBoxVisibility { get => _messageBoxVisibility; set => SetAndRaise(nameof(MessageBoxVisibility), ref _messageBoxVisibility, value); }
 
-    public ICommand MinimizeCommand { get; }
-    public ICommand ResizeCommand { get; }
-    public ICommand CloseCommand { get; }
-
     public ICommand CloseMessageCommand { get; }
 
-    public MainViewModel(NavigationStore navigationStore, Window mainWindow, INotificationService notificationService) {
+    public MainViewModel(NavigationStore navigationStore, INotificationService notificationService) {
         _navigationStore = navigationStore;
         _notificationService = notificationService;
-        MinimizeCommand = new MinimizeCommand(mainWindow);
-        ResizeCommand = new ResizeCommand(mainWindow);
-        CloseCommand = new CloseCommand(mainWindow);
         CloseMessageCommand = new RelayCommand(CloseMessage);
 
         _navigationStore.CurrentViewModelChanged += OnCurrentViewChanged;

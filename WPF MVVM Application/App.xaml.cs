@@ -19,10 +19,10 @@ public partial class App : Application {
 
     protected override void OnStartup(StartupEventArgs e) {
 
-        MainWindow = new MainWindow();
-
-        MainWindow.DataContext = new MainViewModel(_navigationStore, MainWindow, _notificationService);
         _navigationStore.CurrentViewModel = new IndexViewModel(_notificationService);
+        MainWindow = new MainWindow {
+            DataContext = new MainViewModel(_navigationStore, _notificationService)
+        };
         MainWindow.Show();
 
         base.OnStartup(e);

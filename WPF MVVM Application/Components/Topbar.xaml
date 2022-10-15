@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="WPF_MVVM_Application.Components.Topbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_MVVM_Application.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="_topbar">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition MinWidth="15" MaxWidth="30"/>
+            <ColumnDefinition MinWidth="15" MaxWidth="30"/>
+            <ColumnDefinition MinWidth="15" MaxWidth="30"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock 
+                Grid.Column="0" 
+                Text="{Binding ElementName=_topbar, Path=Window.Title}"
+                FontSize="16"
+                Padding="0, 0, 0, 0"
+                Foreground="White"
+                Opacity="0.90"/>
+
+        <Button 
+                x:Name="MinimizeButton"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                Content="—"
+                Grid.Column="1" 
+                Command="{Binding ElementName=_topbar, Path=MinimizeCommand, Mode=OneWay}"
+                />
+
+        <Button 
+                x:Name="ResizeButton"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                Content="▢"
+                Grid.Column="2"
+                Command="{Binding ElementName=_topbar, Path=ResizeCommand}"
+                />
+
+        <Button 
+                x:Name="CloseButton"
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                Content="✖"
+                Grid.Column="3"
+                Command="{Binding ElementName=_topbar, Path=CloseCommand}"
+                />
+
+    </Grid>
+    
+    
+</UserControl>
