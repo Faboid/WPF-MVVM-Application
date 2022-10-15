@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:components="clr-namespace:WPF_MVVM_Application.Components">
+
+    <Style TargetType="{x:Type components:ViewPresenter}">
+        <Setter Property="Background" Value="#FF121212"/>
+    </Style>
+    
+</ResourceDictionary>
