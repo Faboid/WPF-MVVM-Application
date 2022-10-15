@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:components="clr-namespace:WPF_MVVM_Application.Components">
+
+
+    <Style TargetType="{x:Type components:NotificationBox}">
+        <Setter Property="BoxBackground" Value="#FF272121"/>
+        <Setter Property="MessageColor">
+            <Setter.Value>
+                <SolidColorBrush Color="White" Opacity="0.80"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+</ResourceDictionary>

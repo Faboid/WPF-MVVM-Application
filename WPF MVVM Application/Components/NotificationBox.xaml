@@ -20,7 +20,7 @@
         <Grid
             Grid.Row="2"
             Grid.Column="1"
-            Background="#FF272121"
+            Background="{Binding ElementName=_notificationBox, Path=BoxBackground}"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             >
@@ -41,8 +41,7 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Text="{Binding ElementName=_notificationBox, Path=MessageText}"
-                Foreground="White"
-                Opacity="0.80"
+                Foreground="{Binding ElementName=_notificationBox, Path=MessageColor}"
                 Margin="5"
                 TextWrapping="Wrap"
                 />
