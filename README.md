@@ -1,9 +1,10 @@
 # WPF-MVVM-Application
 
-A template for creating a .Net WPF Application using the MVVM architecture.
+A template for creating a .NET WPF Application using the MVVM architecture.
 
-Provides base commands(sync & async), a base viewmodel and error view model(to be used in a composite fashion), and an index view & viewmodel that shows how to wire everything up.
-An integrated notification system is used to send messages to the user, but, unlike MessageBox.Show(), the thread doesn't stop for an answer.
+Provides a ready-to-use DI container, base commands(sync & async), a base viewmodel and error view model(to be used in a composite fashion), and an index view & viewmodel that shows how to wire everything up. An integrated notification system is used to send messages to the user, but, unlike with MessageBox.Show(), the thread doesn't stop for an answer.
+
+The custom components and many base controls have a default style set, but they can be set to default by deleting the styles in ../Styles, deleting the references in App.xaml, and deleting the few scattered hardcoded references.
 
 ## Usage:
 1. Clone the repo to your computer.
