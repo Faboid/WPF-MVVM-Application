@@ -1,28 +1,36 @@
-﻿using System.Windows;
-using WPF_MVVM_Application.Services;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System.Windows;
+using WPF_MVVM_Application.HostBuilders;
 using WPF_MVVM_Application.Stores;
 using WPF_MVVM_Application.ViewModels;
 
 namespace WPF_MVVM_Application;
+
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
 public partial class App : Application {
 
-    private readonly NavigationStore _navigationStore;
-    private readonly INotificationService _notificationService;
+    private readonly IHost _host;
 
     public App() {
-        _navigationStore = new();
-        _notificationService = new NotificationService();
+
+        _host = Host
+            .CreateDefaultBuilder()
+            .AddUIComponents()
+            .AddStores()
+            .AddViewModels()
+            .AddMainWindow()
+            .Build();
     }
 
     protected override void OnStartup(StartupEventArgs e) {
 
-        _navigationStore.CurrentViewModel = new IndexViewModel(_notificationService);
-        MainWindow = new MainWindow {
-            DataContext = new MainViewModel(_navigationStore, _notificationService)
-        };
+        var startingVM = _host.Services.GetRequiredService<IndexViewModel>();
+        _host.Services.GetRequiredService<NavigationStore>().CurrentViewModel = startingVM;
+
+        MainWindow = _host.Services.GetRequiredService<MainWindow>();
         MainWindow.Show();
 
         base.OnStartup(e);
