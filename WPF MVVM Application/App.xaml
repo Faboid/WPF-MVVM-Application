@@ -6,9 +6,19 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
 
+                <!--Custom Components-->
                 <ResourceDictionary Source="pack://application:,,,/Styles/WindowStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Styles/NotificationBoxStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Styles/TopbarStyle.xaml"/>
+
+                <!--Default Components-->
+                <ResourceDictionary Source="pack://application:,,,/Styles/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/DataGridStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/ScrollbarStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/TextBoxStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/TextBlockStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/ComboBoxStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/LabelStyle.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

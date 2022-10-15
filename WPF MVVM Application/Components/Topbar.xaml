@@ -39,6 +39,7 @@
             />
 
         <Button 
+            Style="{StaticResource CloseButton}"
             WindowChrome.IsHitTestVisibleInChrome="True"
             Content="✖"
             Grid.Column="3"
