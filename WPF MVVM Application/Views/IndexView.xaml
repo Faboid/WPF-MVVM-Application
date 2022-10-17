@@ -10,10 +10,34 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            VerticalAlignment="Center"
+            Grid.Row="0"
+            >
+            <Label Content="What's your name?"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+
+        <StackPanel
+            VerticalAlignment="Center"
+            Grid.Row="1"
+            >
+            <Label Content="What's your age?"/>
+            <TextBox Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+
         <Button
+            Grid.Row="2"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Content="Press Here!"
+            Content="Confirm"
+            IsEnabled="{Binding CanConfirm}"
             Command="{Binding HelloCommand}"
             />
 
